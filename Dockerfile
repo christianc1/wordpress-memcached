@@ -54,6 +54,25 @@ RUN { \
 RUN curl -sSL "https://getcomposer.org/installer" | php \
     && mv composer.phar /usr/local/bin/composer
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && rm -rf /tmp/pear/
+
+RUN { \
+      echo ''; \
+      echo 'xdebug.remote_enable=1'; \
+      echo 'xdebug.remote_port="9000"'; \
+    } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN curl -sSL -o /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar" \
+    && chmod +x /usr/local/bin/phpunit
+
+RUN { \
+      echo '#!/usr/bin/env sh'; \
+      echo 'runuser -l www-data -s /bin/sh -c "cd $PHPUNIT_TEST_DIR; /usr/local/bin/phpunit $*"'; \
+    } > /usr/local/bin/tests \
+    && chmod +x /usr/local/bin/tests
+
 # This is WordPress gets installed at first, courtesy of parent image
 WORKDIR /usr/src/wordpress
 
