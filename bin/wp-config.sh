@@ -12,7 +12,11 @@ $memcached_servers = array( \
 		) \
 	); \
 define( "WP_CACHE", true ); \
-define( "WP_HOME", getenv( "WP_HOME" ) ); \
-define( "WP_SITEURL", getenv( "WP_SITEURL" ) ); \' wp-config-sample.php
+if ( getenv( "WP_HOME" ) ) { \
+	define( "WP_HOME", getenv( "WP_HOME" ) ); \
+} \
+if ( getenv( "WP_SITEURL" ) ) \
+	define( "WP_SITEURL", getenv( "WP_SITEURL" ) ); \
+}' wp-config-sample.php
 
 fi
