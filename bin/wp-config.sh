@@ -15,7 +15,7 @@ define( "WP_CACHE", true ); \
 if ( getenv( "WP_HOME" ) ) { \
 	define( "WP_HOME", getenv( "WP_HOME" ) ); \
 } \
-if ( getenv( "WP_SITEURL" ) ) \
+if ( getenv( "WP_SITEURL" ) ) { \
 	define( "WP_SITEURL", getenv( "WP_SITEURL" ) ); \
 }' wp-config-sample.php
 
