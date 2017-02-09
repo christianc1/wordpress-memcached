@@ -11,12 +11,6 @@ $memcached_servers = array( \
 		"11211" \
 		) \
 	); \
-define( "WP_CACHE", true ); \
-if ( getenv( "WP_HOME" ) ) { \
-	define( "WP_HOME", getenv( "WP_HOME" ) ); \
-} \
-if ( getenv( "WP_SITEURL" ) ) { \
-	define( "WP_SITEURL", getenv( "WP_SITEURL" ) ); \
-}' wp-config-sample.php
+define( "WP_CACHE", true );' wp-config-sample.php
 
 fi
