@@ -1,4 +1,4 @@
-FROM wordpress:php7.0
+FROM wordpress:php7.1
 
 MAINTAINER Christian Chung <christian.m.chung@gmail.com>
 
